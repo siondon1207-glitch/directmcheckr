@@ -1,23 +1,669 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "기아 K8 (The New K8)",
+      "image": [
+        "https://k8price.reliabledone.com/images/k8-main.jpg"
+      ],
+      "description": "2026년형 기아 K8 가솔린, 하이브리드, LPi 전 트림별 상세 가격표 정보와 옵션 추천, 취등록세 계산기 및 온라인 견적 절약 혜택 가이드입니다.",
+      "brand": {
+        "@type": "Brand",
+        "name": "기아 (KIA)"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "KRW",
+        "lowPrice": "37370000",
+        "highPrice": "51370000",
+        "offerCount": "15"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-canvas: #fcfbfa; /* 따뜻하고 편안한 아이보리 톤의 캔버스 */
+            --bg-card: #ffffff;
+            --primary-accent: #b27a5e; /* 고급스러운 테라코타 로즈 */
+            --primary-dark: #2d312e; /* 짙은 차콜 */
+            --secondary-muted: #5e6460; /* 차분한 그레이시 그린 */
+            --border-soft: #e9e6e2; /* 아주 부드러운 경계선 */
+            --highlight-warm: #f5ece5; /* 가독성을 돕는 연한 베이지색 */
+            --accent-green: #7d8c80; /* 친환경 및 신뢰감을 주는 뮤트 그린 */
+        }
+        
+        body { 
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif; 
+            line-height: 1.9; 
+            margin: 0; 
+            padding: 0; 
+            color: var(--primary-dark); 
+            background-color: var(--bg-canvas); 
+        }
+        
+        header { 
+            background-color: var(--primary-dark); 
+            color: #ffffff; 
+            text-align: center; 
+            padding: 60px 20px; 
+            border-bottom: 4px solid var(--primary-accent); 
+        }
+        
+        h1 { 
+            font-size: 2.3em; 
+            margin-bottom: 15px; 
+            font-weight: 700; 
+            color: #ffffff; 
+            letter-spacing: -0.05em;
+        }
+        
+        .hero-desc { 
+            font-size: 1.15em; 
+            font-weight: 300; 
+            max-width: 850px;
+            margin: 0 auto;
+            color: #dfdfdf;
+        }
+        
+        .premium-cta { 
+            background-color: var(--bg-card); 
+            border: 1px solid var(--primary-accent);
+            padding: 30px; 
+            border-radius: 12px; 
+            margin: 40px auto; 
+            text-align: center; 
+            max-width: 880px;
+            box-shadow: 0 10px 25px rgba(178, 122, 94, 0.08);
+        }
+        
+        .cta-btn-link { 
+            display: inline-block; 
+            padding: 14px 32px; 
+            background-color: var(--primary-accent); 
+            color: #ffffff; 
+            font-size: 1.1em; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            transition: all 0.3s ease; 
+            border: none; 
+            cursor: pointer;
+        }
+        
+        .cta-btn-link:hover { 
+            background-color: #9a6449; 
+            box-shadow: 0 4px 12px rgba(154, 100, 73, 0.3);
+        }
+        
+        section { 
+            padding: 40px 20px; 
+            max-width: 1040px; 
+            margin: auto; 
+        }
+        
+        .container { 
+            background-color: var(--bg-card);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-soft);
+        }
+        
+        h2 { 
+            font-size: 1.7em; 
+            color: var(--primary-dark); 
+            border-left: 6px solid var(--primary-accent); 
+            padding-left: 16px; 
+            margin-top: 55px; 
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        
+        h3 { 
+            font-size: 1.35em; 
+            color: var(--primary-accent); 
+            margin-top: 35px; 
+            border-bottom: 2px solid var(--border-soft);
+            padding-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        p {
+            margin-bottom: 22px;
+            text-align: justify;
+            color: var(--primary-dark);
+        }
+
+        ul, ol {
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 30px 0; 
+            font-size: 0.95em; 
+        }
+        
+        table th, table td { 
+            padding: 14px; 
+            border: 1px solid var(--border-soft); 
+        }
+        
+        table th { 
+            background-color: var(--primary-dark); 
+            color: #ffffff; 
+            font-weight: 700; 
+            text-align: center; 
+        }
+        
+        table tr:nth-child(even) { 
+            background-color: var(--bg-canvas); 
+        }
+        
+        .interactive-tool { 
+            background-color: var(--highlight-warm); 
+            padding: 35px; 
+            border-radius: 12px; 
+            margin-top: 35px; 
+            border: 1px solid #dfd5cb;
+        }
+        
+        .interactive-tool label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 700; 
+            color: var(--primary-dark); 
+        }
+        
+        .interactive-tool input[type="text"], 
+        .interactive-tool input[type="number"], 
+        .interactive-tool select { 
+            width: 100%; 
+            padding: 12px; 
+            margin-bottom: 20px; 
+            border: 1px solid #c8bfb5; 
+            border-radius: 6px; 
+            box-sizing: border-box; 
+            font-size: 1em;
+            background-color: #ffffff;
+            color: var(--primary-dark);
+        }
+
+        .checkbox-container {
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #c8bfb5;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-row input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-accent);
+        }
+
+        .checkbox-row label {
+            margin-bottom: 0;
+            font-weight: normal;
+            font-size: 0.95em;
+        }
+        
+        .calc-btn { 
+            width: 100%; 
+            padding: 15px;
+            background-color: var(--primary-dark);
+            color: #ffffff;
+            font-size: 1.1em;
+            font-weight: 700;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .calc-btn:hover {
+            background-color: var(--primary-accent);
+        }
+
+        .analysis-output {
+            background-color: #ffffff;
+            border: 1px solid var(--primary-accent);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 25px;
+            display: none;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .analysis-output h4 {
+            margin-top: 0;
+            color: var(--primary-accent);
+            font-size: 1.2em;
+            border-bottom: 2px solid var(--highlight-warm);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .analysis-output p {
+            margin-bottom: 12px;
+            font-size: 0.98em;
+        }
+
+        .external-navigation a { 
+            display: block; 
+            margin-bottom: 15px; 
+            color: var(--primary-dark); 
+            text-decoration: none; 
+            font-weight: 500; 
+            padding: 15px; 
+            background-color: var(--bg-canvas); 
+            border-radius: 8px; 
+            border: 1px solid var(--border-soft);
+            transition: all 0.2s ease; 
+        }
+        
+        .external-navigation a:hover { 
+            background-color: var(--highlight-warm); 
+            color: var(--primary-accent);
+            border-color: var(--primary-accent);
+            padding-left: 20px;
+        }
+
+        footer { 
+            background-color: var(--primary-dark); 
+            color: #b0b4b1; 
+            text-align: center; 
+            padding: 40px; 
+            font-size: 0.88em; 
+            margin-top: 60px; 
+            border-top: 4px solid var(--primary-accent);
+        }
+
+        .price-badge {
+            background-color: var(--highlight-warm);
+            color: var(--primary-accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>기아 더 뉴 K8 가격 및 트림별 취등록세 정밀 분석</h1>
+        <p class="hero-desc">2026년형 K8 가솔린, 하이브리드, LPi 모델의 합리적인 견적 산출과 옵션 선택 비결을 제공합니다</p>
+    </header>
+
+    <section>
+        <div class="container">
+            
+            <div class="premium-cta">
+                <p>2026년형 신형 K8 구매를 고려하고 계신가요? 개별 선택 사양과 세제 혜택에 따른 실시간 실제 출고 비용을 아래 자가 진단 도구를 통해 정밀하게 점검해 보실 수 있습니다.</p>
+                <a href="#payment-simulator" class="cta-btn-link">실시간 K8 견적 및 월 납입금 계산기 실행</a>
+            </div>
+
+            <h2>1. 2026년형 기아 K8 시장 동향과 포지셔닝</h2>
+            <p>준대형 세단 시장의 주역인 기아 K8은 2026년에 이르러 하이테크 편의 사양과 정제된 주행 성능을 바탕으로 패밀리카와 비즈니스 카의 입지를 단단히 다졌습니다. 특히 완전한 디자인 정체성을 구축한 페이스리프트 모델의 안착으로 소비자들의 선호도가 무척 높습니다. 기아 브랜드의 상징적인 준대형 플래그십 라인업으로서, 동급 차량과 비교 시 우수한 가성비와 풍성한 패키지 구성을 자랑합니다.</p>
+            
+            <p>차량 선택 시 가장 먼저 맞닥뜨리는 고민은 바로 파워트레인 종류의 결정입니다. 2026 K8 가솔린 2.5 시그니처와 기아 1.6 터보 하이브리드 시그니처 등 엔진 형식과 세부 가용 등급에 따라 초기 출고가와 유지 비용의 격차가 확연히 드러납니다. 세부적인 취등록세 혜택과 공채 매입액 할인 조건, 그리고 연간 세금 절약 방식의 차이점을 파악해야 합리적인 결정이 가능해집니다.</p>
+
+            <h2>2. K8 모델별 상세 출고가 및 주요 트림 분류</h2>
+            <p>2026년 기준 K8은 가솔린 2.5, 가솔린 3.5, 1.6 터보 하이브리드, 그리고 LPi 3.5 등 다채로운 파워트레인으로 공급되고 있습니다. 각 엔진 라인업 내부에서도 편의 장치 탑재 여부에 따라 노블레스, 시그니처 등의 세부 트림으로 세분화됩니다.</p>
+            
+            <h3>2.1. 가솔린 2.5 및 3.5 기본 가격표</h3>
+            <p>기본기가 탄탄한 가솔린 라인업은 합리적인 가격 정책으로 많은 선택을 받습니다. 진동과 소음 제어가 뛰어나 정숙한 세단 특유의 주행감을 제공합니다.</p>
+            <ul>
+                <li><strong>K8 2.5 가솔린 노블레스 light</strong>: 3,737만 원선에서 시작하는 기본 모델로 실용적인 패키지를 강조합니다.</li>
+                <li><strong>K8 2.5 가솔린 노블레스</strong>: 4,010만 원선으로 주요 지능형 안전 기술과 시트 편의 사양이 탑재됩니다.</li>
+                <li><strong>K8 2.5 가솔린 시그니처</strong>: 4,450만 원선으로 서라운드 뷰 모니터와 고급 가죽 내장재가 포함되어 가장 높은 선호도를 자랑합니다.</li>
+                <li><strong>K8 2.5 가솔린 시그니처 스페셜</strong>: 4,590만 원선으로 고해상도 HUD 및 고급 조명 사양이 강화됩니다.</li>
+                <li><strong>K8 3.5 가솔린 노블레스</strong>: 4,280만 원선으로 6기통 대용량 자연흡기 엔진 특유의 넉넉한 출력이 매력적입니다.</li>
+                <li><strong>K8 3.5 가솔린 시그니처</strong>: 4,720만 원선으로 고급 사륜구동 선택지가 제공됩니다.</li>
+                <li><strong>K8 3.5 가솔린 플래티넘</strong>: 5,137만 원선으로 최상의 능동형 안전 기술과 전자제어 서스펜션이 기본 탑재되는 플래그십 사양입니다.</li>
+            </ul>
+
+            <h3>2.2. 친환경의 핵심인 1.6 터보 하이브리드 트림</h3>
+            <p>높은 연비와 친환경 세제 혜택을 극대화한 하이브리드는 뛰어난 중고차 잔존 가치 덕분에 높은 인기를 보이고 있습니다.</p>
+            <ul>
+                <li><strong>K8 1.6 터보 하이브리드 노블레스 light</strong>: 4,320만 원선으로 가성비 위주의 하이브리드 진입 장벽을 낮췄습니다.</li>
+                <li><strong>K8 1.6 터보 하이브리드 노블레스</strong>: 4,610만 원선으로 스마트 전동식 트렁크와 안전 사양이 조화를 이룹니다.</li>
+                <li><strong>K8 1.6 터보 하이브리드 시그니처</strong>: 4,980만 원선으로 이중접합 차음 글라스와 최고급 나파가죽 시트가 감성을 더합니다.</li>
+                <li><strong>K8 1.6 터보 하이브리드 시그니처 스페셜</strong>: 5,130만 원선으로 최신의 자율주행 보조 시스템이 빠짐없이 탑재됩니다.</li>
+            </ul>
+
+            <h3>2.3. 경제성을 지향하는 3.5 LPi 라인업</h3>
+            <p>유류비 부담이 상대적으로 적은 액화석유가스(LPG) 모델 역시 장거리 비즈니스 운행이 잦은 고객들에게 큰 지지를 얻고 있습니다.</p>
+            <ul>
+                <li><strong>K8 LPi 3.5 프레스티지</strong>: 3,750만 원선으로 법인 및 렌터카 수요뿐 아니라 일반 개인 구매 장벽도 낮췄습니다.</li>
+                <li><strong>K8 LPi 3.5 노블레스</strong>: 4,120만 원선으로 주행 편의를 위한 첨단 운전자 보조 장치들이 정밀하게 결합되어 있습니다.</li>
+            </ul>
+
+            <table>
+                <caption>2026 K8 대표 파워트레인별 주요 가격 정보 및 제원 비교</caption>
+                <thead>
+                    <tr>
+                        <th>엔진 라인업 및 대표 모델</th>
+                        <th>평균 기본 금액</th>
+                        <th>공인 복합 연비</th>
+                        <th>취등록세 혜택 수준</th>
+                        <th>주요 특장점</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2.5 가솔린 시그니처</td>
+                        <td>4,450만 원</td>
+                        <td>12.0 km/l</td>
+                        <td>일반 기준 적용</td>
+                        <td>합리적인 초기 가격, 무난한 유지 비용</td>
+                    </tr>
+                    <tr>
+                        <td>3.5 가솔린 플래티넘</td>
+                        <td>5,137만 원</td>
+                        <td>10.6 km/l</td>
+                        <td>일반 기준 적용</td>
+                        <td>6기통 엔진의 부드러운 회전 질감과 AWD 지원</td>
+                    </tr>
+                    <tr>
+                        <td>1.6 하이브리드 시그니처</td>
+                        <td>4,980만 원</td>
+                        <td>18.0 km/l</td>
+                        <td>하이브리드 세제 감면 적용</td>
+                        <td>도심 주행 극강의 효율성, 매우 조용한 아이들링</td>
+                    </tr>
+                    <tr>
+                        <td>3.5 LPi 노블레스</td>
+                        <td>4,120만 원</td>
+                        <td>8.0 km/l</td>
+                        <td>일반 기준 적용</td>
+                        <td>LPG 저렴한 충전 요금 덕분에 뛰어난 실유지비 장점</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>3. 실구매자 후기로 알아보는 K8 장단점과 커뮤니티 분석</h2>
+            <p>차량을 구매하기 전에는 실제 운전자들이 장기간 주행하며 느낀 내돈내산 평가를 수집해 보는 단계가 중요합니다. 국내 자동차 전문 포털과 주요 온라인 커뮤니티인 보배드림, 디시인사이드 자영업 및 자동차 갤러리, 에펨코리아(펨코) 게시판 등에서 언급되는 실질적인 반응을 취합했습니다.</p>
+            
+            <p><strong>주요 장점 요약</strong>: 승차감과 정숙성 부분에서는 준대형 시장 최고 수준이라는 추천이 대다수입니다. 특히 K8 메리디안 사운드 옵션은 콘서트홀을 방불케 하는 수준 높은 음질을 선사하여 만족도가 매우 높습니다. 2열 레그룸이 무척 넓어 패밀리 세단으로서의 가치가 높고, K8 컴포트 패키지에 포함된 에르고 모션 시트는 장거리 운전 시 피로도를 대폭 경감해 줍니다.</p>
+            
+            <p><strong>단점 및 아쉬운 점</strong>: 다소 과감하게 변경된 전면부 그릴 디자인에 대해 개인마다 시각적 차이점이 뚜렷하게 존재합니다. 하이브리드 사양의 경우 겨울철 엔진 개입 시의 이질감이 미세하게 존재한다는 일부 후기도 발견됩니다. 또한 완전 무결한 안전 장치를 원할 시 K8 드라이브 와이즈 패키지를 필수로 추가해야 하므로 최종 인수 시 예상했던 것보다 견적 비용이 초과할 수 있어 꼼꼼한 계산이 필요합니다.</p>
+
+            <h2>4. 현명한 견적 비교와 최저가 구매 전략</h2>
+            <p>기아 K8을 제일 싼곳 혹은 저렴한곳에서 인도받기 위해서는 다양한 계약 경로를 유기적으로 비교하는 기법이 선행되어야 합니다. 단순히 동네 대리점만 방문하기보다 여러 디지털 플랫폼을 병행해 활용하는 방식이 대세로 자리 잡았습니다.</p>
+            
+            <p>온라인 다이렉트 신차 비교 사이트나 모바일 토스 앱, 카카오톡 금융 허브 등을 이용하면 신차 출고 시 동반되는 제휴 카드 캐시백, 신규 가입 지원금 혜택을 손쉽게 확인할 수 있습니다. 보증금 비율이나 선수금 예산 범위에 따라 월 납입금 차이가 나기 때문에, 신용 등급을 반영한 금리 연동형 가입 컨설팅 서비스를 이용해 불필요한 마진을 걷어내는 것이 좋습니다. 커뮤니티 성지 혹은 좌표로 명명된 비공식 우수 대리점 정보를 참고하되, 과도한 이자율 책정 유도나 검증되지 않은 사설 업체의 현금지원 유혹은 금융 감독 기관의 피해 예방 지침에 따라 사전에 철저히 거르셔야 안전합니다.</p>
+
+            <h2 id="payment-simulator">5. 2026 K8 실시간 견적 및 월 상환 비용 자가 계산기</h2>
+            <p>입력하시는 값에 따라 취등록세 감면 요건을 계산하고 월 예상 납입금을 실시간으로 도출하는 프리미엄 시뮬레이터입니다. 원하시는 트림과 핵심 옵션을 직접 대입하여 예산 한도를 직접 가늠해 보시기 바랍니다.</p>
+            
+            <div class="interactive-tool">
+                <h3>K8 실구매 비용 모의 산출 시스템</h3>
+                <form id="k8EstimateForm" onsubmit="calculateK8Cost(event);">
+                    
+                    <label for="k8-trim">1. 기아 K8 세부 파워트레인 및 트림 선택</label>
+                    <select id="k8-trim" name="k8-trim" required>
+                        <option value="">-- 모델을 선택하세요 --</option>
+                        <option value="gas25_noble_light">K8 2.5 가솔린 노블레스 light (3,737만 원)</option>
+                        <option value="gas25_noble">K8 2.5 가솔린 노블레스 (4,010만 원)</option>
+                        <option value="gas25_sig">K8 2.5 가솔린 시그니처 (4,450만 원)</option>
+                        <option value="gas35_plat">K8 3.5 가솔린 플래티넘 (5,137만 원)</option>
+                        <option value="hev16_noble">K8 1.6 터보 하이브리드 노블레스 (4,610만 원)</option>
+                        <option value="hev16_sig">K8 1.6 터보 하이브리드 시그니처 (4,980만 원)</option>
+                        <option value="lpi35_pres">K8 LPi 3.5 프레스티지 (3,750만 원)</option>
+                        <option value="lpi35_noble">K8 LPi 3.5 노블레스 (4,120만 원)</option>
+                    </select>
+
+                    <label>2. 추가 장착 원하시는 선택 품목 (중복 선택 가능)</label>
+                    <div class="checkbox-container">
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="opt-drive-wise" value="1200000">
+                            <label for="opt-drive-wise">K8 드라이브 와이즈 (고속도로 주행 보조 등 스마트 패키지 포함 / 120만 원)</label>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="opt-meridian" value="850000">
+                            <label for="opt-meridian">K8 메리디안 프리미엄 사운드 시스템 (고급 오디오 브랜드 / 85만 원)</label>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="opt-comfort" value="1100000">
+                            <label for="opt-comfort">K8 컴포트 패키지 (운전석 에르고 모션 및 2열 통풍 / 110만 원)</label>
+                        </div>
+                        <div class="checkbox-row">
+                            <input type="checkbox" id="opt-style" value="1500000">
+                            <label for="opt-style">K8 스타일 패키지 (19인치 다크 휠 및 순차 점등 턴시그널 / 150만 원)</label>
+                        </div>
+                    </div>
+
+                    <label for="down-payment">3. 초기 인도 금액 설정 (인도 시 직접 납부할 선수금 - 단위: 만 원)</label>
+                    <input type="number" id="down-payment" name="down-payment" min="0" placeholder="예: 1500" required>
+
+                    <label for="installment-months">4. 할부 상환 약정 기간 선택</label>
+                    <select id="installment-months" name="installment-months" required>
+                        <option value="12">12개월 일시 상환 구도</option>
+                        <option value="24">24개월 균등 상환</option>
+                        <option value="36" selected>36개월 균등 상환</option>
+                        <option value="48">48개월 장기 균등 상환</option>
+                        <option value="60">60개월 최장기 균등 상환</option>
+                    </select>
+
+                    <label for="interest-rate">5. 적용 예상 할부 연이율 입력 (%)</label>
+                    <input type="number" id="interest-rate" name="interest-rate" min="0.0" max="15.0" step="0.1" value="4.8" required>
+
+                    <label for="residence-area">6. 거주 예정 지역 (공채 할인 계산에 연동)</label>
+                    <select id="residence-area" name="residence-area" required>
+                        <option value="seoul">서울특별시 (채권 매입율 상대적으로 높음)</option>
+                        <option value="gyeonggi">경기도 및 인천광역시</option>
+                        <option value="other">기타 지방 자치 단체</option>
+                    </select>
+
+                    <button type="submit" class="calc-btn">정밀 실구매 비용 및 월 납입료 시뮬레이션 개시</button>
+                </form>
+
+                <div id="calculatorResultBlock" class="analysis-output">
+                    <h4>기아 K8 정밀 모의 분석 결과 리포트</h4>
+                    <p id="resBasePrice">차량 기본 출고가: 산출 중...</p>
+                    <p id="resOptionPrice">선택 옵션 추가금: 산출 중...</p>
+                    <p id="resTaxPrice">취등록세 합계 (친환경 혜택 연산 포함): 산출 중...</p>
+                    <p id="resTotalPrice">최종 신차 인수 소요 예산 (취등록세 포함): 산출 중...</p>
+                    <p id="resInstallmentPrice">할부 실행 전환 총원금: 산출 중...</p>
+                    <p id="resMonthlyPayment" style="font-size: 1.15em; color: var(--primary-accent); font-weight: bold;">매월 예상 원리금 납입액: 산출 중...</p>
+                    <p id="resExpertOpinion" style="font-size: 0.9em; color: var(--secondary-muted); border-top: 1px solid var(--border-soft); padding-top: 15px; margin-top: 15px;"></p>
+                </div>
+            </div>
+
+            <h2>6. AI 기반 검색 고도화 시대와 기아 K8 정보 수집 요령</h2>
+            <p>2026년 첨단 정보 기술의 도래로 최적의 차량 견적을 탐색하는 문법이 극적으로 변화했습니다. 단순히 통합 검색창에 차종 명칭만 검색하는 과거 방식에서 탈피하여, 챗지피티(ChatGPT)나 구글 제미나이(Gemini) 등의 거대 인공지능 모델을 활용해 개인 맞춤형 세금 절약 노하우를 자동 설계받는 방식이 정착되었습니다. 이를 통해 세부 연비 정보와 최신 프로모션을 1초 만에 확인해 비교적 명확한 의사결정을 내릴 수 있습니다.</p>
+            
+            <p>이외에도 네이버 및 구글 포털의 스마트 스니펫 섹션을 통해 거주지별로 상이한 공채 매입 감면 요율을 추적하고, 인스타그램, 페이스북, 트위터, 유튜브 등 대형 소셜 네트워크 플랫폼 상의 전문 테크 리뷰를 교차 체크하는 습관이 필수적입니다. 실시간 수급 상황에 따라 기아 지점별로 자체 기획하는 이벤트 및 전시차 선착순 마이너스 마케팅에 관한 동향을 민첩하게 포착해 둔다면 최상의 실리적 이득을 완성할 수 있을 것입니다.</p>
+
+            <h2>7. 신뢰할 수 있는 공식 정보 안내 및 출처</h2>
+            <p>K8 가격 요율표 및 세금 산출 체계에 관한 정확한 원자료는 아래의 공신력 있는 공식 외부 홈페이지 및 포털 백과사전을 통하여 안전하게 검토하시기를 적극 권해드립니다.</p>
+            
+            <div class="external-navigation">
+                <a href="https://directmchecks.koreahankang.com" target="_blank">K8 최저가 온라인 다이렉트 견적 정보센터 (reliabledone 서브도메인 신차 전문 분석지)</a>
+                <a href="https://namu.wiki/w/%EA%B8%B0%EC%95%84%20K8" target="_blank">나무위키 – 기아 K8 모델의 정의, 역사 및 역대 파워트레인 변천 정보</a>
+                <a href="https://www.kia.com" target="_blank">기아 공식 웹사이트 – 2026 K8 공식 카탈로그 다운로드 및 순정 사양 정보</a>
+            </div>
+
+            <div class="premium-cta" style="margin-top: 50px;">
+                <h3>합리적인 K8 설계의 마무리: 현명한 예산 계획을 완성해 보십시오</h3>
+                <p>차량 견적 수립 시 무리한 사양 증액보다는 평소 운행 습관에 필수적인 트림을 조화롭게 타협하는 것이 고정비 절감의 핵심입니다. 위의 자가 계산 시스템을 활용하여 안정적인 카 라이프를 열어 보십시오.</p>
+                <a href="#k8EstimateForm" class="cta-btn-link">상단 계산기로 돌아가 정보 재설정하기</a>
+            </div>
+            
+        </div>
+    </section>
+
+  
+    <script>
+        function calculateK8Cost(event) {
+            event.preventDefault();
+            
+            var trim = document.getElementById('k8-trim').value;
+            var downPaymentInput = parseFloat(document.getElementById('down-payment').value) || 0;
+            var months = parseInt(document.getElementById('installment-months').value) || 36;
+            var rate = parseFloat(document.getElementById('interest-rate').value) || 0;
+            var area = document.getElementById('residence-area').value;
+
+            var resultBlock = document.getElementById('calculatorResultBlock');
+            var resBasePrice = document.getElementById('resBasePrice');
+            var resOptionPrice = document.getElementById('resOptionPrice');
+            var resTaxPrice = document.getElementById('resTaxPrice');
+            var resTotalPrice = document.getElementById('resTotalPrice');
+            var resInstallmentPrice = document.getElementById('resInstallmentPrice');
+            var resMonthlyPayment = document.getElementById('resMonthlyPayment');
+            var resExpertOpinion = document.getElementById('resExpertOpinion');
+
+            resultBlock.style.display = 'block';
+
+            // 트림별 기본 가격 설정 (단위: 원)
+            var basePrice = 0;
+            var isHybrid = false;
+            var trimName = "";
+
+            switch (trim) {
+                case 'gas25_noble_light':
+                    basePrice = 37370000;
+                    trimName = "K8 2.5 가솔린 노블레스 light";
+                    break;
+                case 'gas25_noble':
+                    basePrice = 40100000;
+                    trimName = "K8 2.5 가솔린 노블레스";
+                    break;
+                case 'gas25_sig':
+                    basePrice = 44500000;
+                    trimName = "K8 2.5 가솔린 시그니처";
+                    break;
+                case 'gas35_plat':
+                    basePrice = 51370000;
+                    trimName = "K8 3.5 가솔린 플래티넘";
+                    break;
+                case 'hev16_noble':
+                    basePrice = 46100000;
+                    isHybrid = true;
+                    trimName = "K8 1.6 터보 하이브리드 노블레스";
+                    break;
+                case 'hev16_sig':
+                    basePrice = 49800000;
+                    isHybrid = true;
+                    trimName = "K8 1.6 터보 하이브리드 시그니처";
+                    break;
+                case 'lpi35_pres':
+                    basePrice = 37500000;
+                    trimName = "K8 LPi 3.5 프레스티지";
+                    break;
+                case 'lpi35_noble':
+                    basePrice = 41200000;
+                    trimName = "K8 LPi 3.5 노블레스";
+                    break;
+                default:
+                    basePrice = 0;
+            }
+
+            if (basePrice === 0) {
+                alert("원활한 견적 산출을 위해 기아 K8 세부 트림을 먼저 지정해 주시기 바랍니다.");
+                resultBlock.style.display = 'none';
+                return;
+            }
+
+            // 옵션 추가금 연산
+            var optionPrice = 0;
+            if (document.getElementById('opt-drive-wise').checked) {
+                optionPrice += parseFloat(document.getElementById('opt-drive-wise').value);
+            }
+            if (document.getElementById('opt-meridian').checked) {
+                optionPrice += parseFloat(document.getElementById('opt-meridian').value);
+            }
+            if (document.getElementById('opt-comfort').checked) {
+                optionPrice += parseFloat(document.getElementById('opt-comfort').value);
+            }
+            if (document.getElementById('opt-style').checked) {
+                optionPrice += parseFloat(document.getElementById('opt-style').value);
+            }
+
+            // 공급가 합산
+            var supplyCost = basePrice + optionPrice;
+
+            // 취등록세 계산 (일반 승용 7%)
+            var taxRate = 0.07;
+            var calculatedTax = Math.round(supplyCost * taxRate);
+
+            // 친환경차 하이브리드 감면 보정 적용 (2026 세제 한도 기준 취득세 최대 40만 원 감면)
+            if (isHybrid) {
+                calculatedTax = calculatedTax - 400000;
+                if (calculatedTax < 0) calculatedTax = 0;
+            }
+
+            // 공채 매입 비용 추정치 산출
+            var bondFee = 0;
+            if (area === 'seoul') {
+                bondFee = Math.round(supplyCost * 0.015); // 서울 채권 할인 부담액 대략적 적용
+            } else if (area === 'gyeonggi') {
+                bondFee = Math.round(supplyCost * 0.008);
+            } else {
+                bondFee = Math.round(supplyCost * 0.004);
+            }
+
+            var totalTaxAndFee = calculatedTax + bondFee;
+            var acquisitionCost = supplyCost + totalTaxAndFee;
+
+            // 선수금 만 원 단위를 원 단위로 환산
+            var downPaymentWon = downPaymentInput * 10000;
+            if (downPaymentWon > acquisitionCost) {
+                downPaymentWon = acquisitionCost;
+            }
+
+            // 할부 이송 총금액
+            var installmentPrincipal = acquisitionCost - downPaymentWon;
+
+            // 월 할부금 산출 로직 (원리금균등분할상환 공식 적용)
+            var monthlyPayment = 0;
+            if (installmentPrincipal > 0) {
+                if (rate > 0) {
+                    var monthlyRate = (rate / 100) / 12;
+                    monthlyPayment = Math.round(
+                        (installmentPrincipal * monthlyRate * Math.pow(1 + monthlyRate, months)) / 
+                        (Math.pow(1 + monthlyRate, months) - 1)
+                    );
+                } else {
+                    monthlyPayment = Math.round(installmentPrincipal / months);
+                }
+            }
+
+            // 화면 표시 값 업데이트
+            resBasePrice.innerHTML = "차량 기본 출고가: <span class='price-badge'>" + (basePrice / 10000).toLocaleString() + "만 원</span>";
+            resOptionPrice.innerHTML = "선택 옵션 추가금: <span class='price-badge'>" + (optionPrice / 10000).toLocaleString() + "만 원</span>";
+            resTaxPrice.innerHTML = "취등록세 및 채권 비용 (친환경 감면 반영): <span class='price-badge'>" + Math.round(totalTaxAndFee / 10000).toLocaleString() + "만 원</span>";
+            resTotalPrice.innerHTML = "최종 신차 인수 소요 예산 (실구매액): <span class='price-badge'>" + Math.round(acquisitionCost / 10000).toLocaleString() + "만 원</span>";
+            resInstallmentPrice.innerHTML = "할부 전환 원리금 잔액: <span class='price-badge'>" + Math.round(installmentPrincipal / 10000).toLocaleString() + "만 원</span> (초기 기납 선수금 " + downPaymentInput.toLocaleString() + "만 원 차감 적용)";
+            resMonthlyPayment.innerHTML = "매월 예상 원리금 납입액: <span style='font-size: 1.2em; color: #b27a5e;'>" + monthlyPayment.toLocaleString() + " 원</span>";
+
+            // 전문 진단 코멘트 작성
+            var opinion = trimName + " 모델에 추가 옵션 구성을 대입한 분석 소견입니다. ";
+            if (isHybrid) {
+                opinion += "선택하신 모델은 1.6 터보 하이브리드 엔진이 적용되어 최대 40만 원의 취등록세 세제 감면 조항이 올바르게 계산되었습니다. 가솔린 대비 연비 이점이 뚜렷하여 연간 주행거리가 15,000km 이상일 시 가솔린과의 초기 차액을 3년 내로 전액 회수 가능합니다.";
+            } else {
+                opinion += "본 가솔린 사양은 준대형 특유의 중후한 파워 트레인 만족도를 보장합니다. 다만 배기량에 따른 세액 격차 및 채권 할인 요율이 지역마다 미세하게 다를 수 있어 계약 시 기아 전용 금융 파이낸셜 우대 금리 쿠폰 여부를 담당 카매니저에게 한 번 더 검증받는 방법을 추천합니다.";
+            }
+            resExpertOpinion.innerText = opinion;
+        }
+    </script>
+  
